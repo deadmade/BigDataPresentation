@@ -47,7 +47,9 @@
             pkgs.git
             pkgs.lazygit
             pythonEnv
-            pkgs.zopfli
+            pkgs.mermaid-cli
+            pkgs.imagemagick
+            pkgs.ripgrep
 
             pkgs.presenterm
           ];

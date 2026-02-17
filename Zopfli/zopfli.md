@@ -117,7 +117,7 @@ Warum Zopfli nutzen?
 <!-- incremental_lists: true -->
 - Anwendungsfall: "Write Once, Read Many".
 - Beispiele: 
-    - Statische Assets im Web (CSS, JS, PNGs).
-    - Software-Updates.
-    - Langzeit-Archivierung.
+    - Statische Assets im Web (CSS, JS, PNGs)
+    - Software-Updates
+    - Langzeit-Archivierung
 
