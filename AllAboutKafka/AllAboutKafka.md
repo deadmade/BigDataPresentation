@@ -92,18 +92,67 @@ Kafka
 <!-- font_size: 3 -->
 Messages
 ---
+<!-- incremental_lists: true -->
 - Dateineinheit = Message
 <!-- speaker_note: Vergleichbar mit row/record in einer Datenbank -->
 - Message = Byte-Array
-    -> Kein Spezifisches Format
-    -> Optionale Metadaten(Schlüssel) = Byte-Array
+    - Kein Spezifisches Format
+    - Optionaler Message Key = Byte-Array
 <!-- speaker_note: Kafka ist das Vormat der Nachricht oder Schlüssel komplett egal! -->
+<!-- end_slide -->
+
+<!-- font_size: 3 -->
+Topics
+---
+<!-- incremental_lists: true -->
+- Topics = Database Table
+- Jedes Topic hat mehrere Partitionen
+- Ein Topic kann auf mehrere Server verteilt werden
+<!-- end_slide -->
+
+<!-- font_size: 3 -->
+Partition
+---
+<!-- incremental_lists: true -->
+- kleinste Speichereinheit
+- Log-Datei in die Messages nacheinander hineingeschrieben werden
+- Message Key definiert Partition
+- Wichtige Merkmale:
+    - Reihenfolge: Pro Partition sind die Nachrichtien streng chronlogisch sortiert. Nicht pro Topic!
+    - Unveränderlichkeit: Einmal geschriebene Daten in einer Partition können nicht mehr geändert werden
+<!-- end_slide -->
+
+<!-- font_size: 3 -->
+Topics am Beispiel
+---
+![](Images/partition-topic.png)
 <!-- end_slide -->
 
 <!-- font_size: 3 -->
 Batches
 ---
+<!-- incremental_lists: true -->
+- Menga an Messages pro Topic pro Partition
+- Effizientere Speicherung von Messages
+- Tradeoff zwischen Lateny / Throughput
+<!-- end_slide -->
 
+<!-- font_size: 3 -->
+Schemas
+---
+<!-- incremental_lists: true -->
+- Konsistentes Daten Format ist Wichtig sodass Sender / Empfänger kommunizizieren können
+- Versionierung ist wichtig
+- Schemas werden meistens in einem zentralen Repo gespeichert
+<!-- end_slide -->
+
+<!-- font_size: 3 -->
+Schemas
+---
+<!-- incremental_lists: true -->
+- JSON
+- XML
+- Apache Avro
 <!-- end_slide -->
 
 
