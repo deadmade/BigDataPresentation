@@ -19,3 +19,4 @@
 - What options do I have to add sources for my presentem presentation? 
 - bitte erkläre mir kurz und knapp was eine partition in kafka ist
 - könntest du mir bitte dieses bild erklären (Bild Topics am Beispiel)
+- Hey, bitte verbessere die Rechtschreibfehler in der AllAboutKafka.md präsentation

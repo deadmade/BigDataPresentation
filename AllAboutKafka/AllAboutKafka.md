@@ -22,12 +22,12 @@ Organisatorisches
 <!-- end_slide -->
 
 <!-- font_size: 3 -->
-Wieso Lohnt es sich zuzuhören?
+Wieso lohnt es sich zuzuhören?
 ---
 
 <!-- alignment: center -->
 **80 % der Fortune-100-Unternehmen nutzen Kafka**
-<!-- speaker_note: Fortune 100 -> 100 firmen mit dem größten Einkommen in den USA -->
+<!-- speaker_note: Fortune 100 -> 100 Firmen mit dem größten Einkommen in den USA -->
 
 
 
@@ -48,31 +48,31 @@ Wieso Lohnt es sich zuzuhören?
 <!-- jump_to_middle -->
 
 <!-- font_size: 5 -->
-Public/Subscription
+Publish/Subscribe
 ---
 <!-- no_footer -->
 <!-- end_slide -->
 
 <!-- font_size: 3 -->
-Public/Subscription
+Publish/Subscribe
 ---
 ![](Images/Problem-Kafka-1.png)
 <!-- end_slide -->
 
 <!-- font_size: 3 -->
-Public/Subscription
+Publish/Subscribe
 ---
 ![](Images/Problem-Kafka-2.png)
 <!-- end_slide -->
 
 <!-- font_size: 3 -->
-Public/Subscription
+Publish/Subscribe
 ---
 ![](Images/Problem-Kafka-3.png)
 <!-- end_slide -->
 
 <!-- font_size: 3 -->
-Public/Subscription
+Publish/Subscribe
 ---
 ![](Images/Problem-Kafka-4.png)
 <!-- end_slide -->
@@ -82,11 +82,11 @@ Kafka
 ---
 - Publish/Subscribe-Messaging-System
 <!-- speaker_note: Kafka = “distributed commit log" ||  “distributing streaming platform.” -->
-- Daten werden dauerhaft und in Richtige reihenfolge gespeichert
-<!-- speaker_note: Dateisystem || Datenbank speichern Daten durable sodass diese bei Problem wiederhergestellt werden können (DB Log) -->
+- Daten werden dauerhaft und in richtiger Reihenfolge gespeichert
+<!-- speaker_note: Dateisystem || Datenbank speichern Daten durable, sodass diese bei Problemen wiederhergestellt werden können (DB Log) -->
 - Können deterministisch gelesen werden
 - Daten können im System verteilt werden
-<!-- speaker_note: Bietet zusätzliche ausfallsicherheit + scaling-->
+<!-- speaker_note: Bietet zusätzliche Ausfallsicherheit + scaling-->
 <!-- end_slide -->
 
 <!-- font_size: 3 -->
@@ -96,9 +96,10 @@ Messages
 - Dateineinheit = Message
 <!-- speaker_note: Vergleichbar mit row/record in einer Datenbank -->
 - Message = Byte-Array
-    - Kein Spezifisches Format
+    - Kein spezifisches Format
     - Optionaler Message Key = Byte-Array
-<!-- speaker_note: Kafka ist das Vormat der Nachricht oder Schlüssel komplett egal! -->
+    - Offset
+<!-- speaker_note: Kafka ist das Format der Nachricht oder des Schlüssels komplett egal! -->
 <!-- end_slide -->
 
 <!-- font_size: 3 -->
@@ -115,10 +116,10 @@ Partition
 ---
 <!-- incremental_lists: true -->
 - kleinste Speichereinheit
-- Log-Datei in die Messages nacheinander hineingeschrieben werden
+- Log-Datei, in die Messages nacheinander hineingeschrieben werden
 - Message Key definiert Partition
 - Wichtige Merkmale:
-    - Reihenfolge: Pro Partition sind die Nachrichtien streng chronlogisch sortiert. Nicht pro Topic!
+    - Reihenfolge: Pro Partition sind die Nachrichten streng chronologisch sortiert, nicht pro Topic!
     - Unveränderlichkeit: Einmal geschriebene Daten in einer Partition können nicht mehr geändert werden
 <!-- end_slide -->
 
@@ -132,16 +133,16 @@ Topics am Beispiel
 Batches
 ---
 <!-- incremental_lists: true -->
-- Menga an Messages pro Topic pro Partition
+- Menge an Messages pro Topic pro Partition
 - Effizientere Speicherung von Messages
-- Tradeoff zwischen Lateny / Throughput
+- Trade-off zwischen Latenz / Throughput
 <!-- end_slide -->
 
 <!-- font_size: 3 -->
 Schemas
 ---
 <!-- incremental_lists: true -->
-- Konsistentes Daten Format ist Wichtig sodass Sender / Empfänger kommunizizieren können
+- Ein konsistentes Datenformat ist wichtig, sodass Sender/Empfänger kommunizieren können
 - Versionierung ist wichtig
 - Schemas werden meistens in einem zentralen Repo gespeichert
 <!-- end_slide -->
@@ -153,6 +154,105 @@ Schemas
 - JSON
 - XML
 - Apache Avro
+<!-- end_slide -->
+
+<!-- font_size: 3 -->
+Apache Avro
+---
+<!-- incremental_lists: true -->
+- JSON für Big Data
+- Zwei Komponenten
+    - Schema
+    - Binary Data -> Tatsächliche Information in kleinem, effizientem Format
+- Writer -> Benutzt Schema + data = Binary Data
+- Reader -> Schema + Binary Data -> Data
+<!-- end_slide -->
+
+<!-- jump_to_middle -->
+
+<!-- font_size: 5 -->
+Producers and Consumers
+---
+<!-- no_footer -->
+<!-- end_slide -->
+
+<!-- font_size: 3 -->
+Producers
+---
+<!-- incremental_lists: true -->
+- Erstellt neue Messages
+- Legt fest auf welches Topic die Message landet
+- Legt fest welche Partition die Message bekommt (Optional)
+- Auch bekannt als publishers oder writers
+<!-- end_slide -->
+
+<!-- font_size: 3 -->
+Consumers
+---
+<!-- incremental_lists: true -->
+- Für ein Topic subscribed und liest die Messages in der Reihenfolge, in der sie erstellt wurden
+- Um Nachrichten nicht doppelt zu lesen, wird das Offset jeder Nachricht gespeichert -> Consumer kann jederzeit neu gestartet werden
+- Auch bekannt als subscribers oder readers
+<!-- end_slide -->
+
+<!-- font_size: 3 -->
+Consumer Group
+---
+<!-- incremental_lists: true -->
+- Mehrere Consumers zusammengefasst in einer Gruppe
+- Konsumieren zusammen ein Topic jedoch nie eine Partition zusammen!
+<!-- end_slide -->
+
+<!-- font_size: 3 -->
+Consumer Group
+---
+![](Images/ConsumerGroup.png)
+<!-- end_slide -->
+
+<!-- font_size: 3 -->
+Consumer Group
+---
+- Möglichkeit, Consumer horizontal zu skalieren
+- Wenn ein Consumer ausfällt, können die anderen neu rebalanced werden
+<!-- end_slide -->
+
+<!-- jump_to_middle -->
+<!-- font_size: 5 -->
+Brokers and Clusters
+---
+<!-- no_footer -->
+<!-- end_slide -->
+
+<!-- font_size: 3 -->
+Brokers
+---
+- Broker = Ein Kafka Server
+- Erhält Nachrichten, assigns offsets to them + Speichert sie
+- Liefert Messages an die Consumer
+- Kann Tausende Partitionen und Millionen Messages pro Sekunde handeln
+<!-- end_slide -->
+
+<!-- font_size: 3 -->
+Clusters
+---
+- Brokers sind designt, um im Cluster zu arbeiten
+- In einem Cluster ist ein Broker der Controller
+    - Automatisch gewählt von den aktuellen Membern des Clusters
+    - Assigning partitions to brokers + monitoring for broker failures
+- Eine Partition gehört einem Broker = Leader of the Partition
+    - Kann mehreren Brokern zugewiesen werden => Replikation
+<!-- end_slide -->
+
+<!-- font_size: 3 -->
+Clusters
+---
+![](Images/Cluster.png)
+<!-- end_slide -->
+
+<!-- font_size: 3 -->
+Retention
+---
+- muss ich noch machen
 <!-- end_slide -->
 
 
