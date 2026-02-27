@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-label="Kafka message structure with key, value, and offset">
+  <defs>
+    <linearGradient id="msgBg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f8fbff"/>
+      <stop offset="100%" stop-color="#e9f2ff"/>
+    </linearGradient>
+    <linearGradient id="rowFill" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#d9f5ef"/>
+      <stop offset="100%" stop-color="#c5ede5"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#38567d" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="620" fill="url(#msgBg)"/>
+
+  <rect x="70" y="140" width="1060" height="390" rx="28" fill="#ffffff" stroke="#8faad0" stroke-width="3" filter="url(#softShadow)"/>
+
+  <rect x="150" y="245" width="900" height="140" rx="18" fill="url(#rowFill)" stroke="#6b9ba4" stroke-width="3"/>
+
+  <line x1="370" y1="245" x2="370" y2="385" stroke="#26445d" stroke-width="4"/>
+  <line x1="800" y1="245" x2="800" y2="385" stroke="#26445d" stroke-width="4"/>
+
+  <g font-family="Space Grotesk, sans-serif" font-size="38" fill="#0f1d31" font-weight="700" text-anchor="middle" dominant-baseline="middle">
+    <text x="260" y="315">Key</text>
+    <text x="585" y="315">Value (bytes)</text>
+    <text x="925" y="315">Offset</text>
+  </g>
+
+  <text x="600" y="458" font-family="IBM Plex Mono, monospace" font-size="24" fill="#335279" text-anchor="middle"> </text>
+</svg>

@@ -8,9 +8,9 @@
     </div>
     <div class="k-legend">
       <span v-click="1">1. Producer schreibt Events</span>
-      <span v-click="2">2. Topic nimmt Events partitioniert auf</span>
+      <span v-click="2">2. Topic nimmt Events</span>
       <span v-click="3">3. Broker replizieren und speichern</span>
-      <span v-click="4">4. Consumer lesen offsetsicher</span>
+      <span v-click="4">4. Consumer lesen</span>
     </div>
   </div>
 </template>

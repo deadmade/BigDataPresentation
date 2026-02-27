@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-label="Avro writer and reader pipeline">
+  <defs>
+    <linearGradient id="bg2" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f7fbff"/>
+      <stop offset="100%" stop-color="#e7f5ef"/>
+    </linearGradient>
+    <marker id="arr2" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#235e47"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="620" fill="url(#bg2)"/>
+  <text x="70" y="90" font-family="Space Grotesk, sans-serif" font-size="34" fill="#13362a" font-weight="700">Apache Avro Data Flow</text>
+
+  <rect x="70" y="160" width="270" height="310" rx="20" fill="#ffffff" stroke="#68a48b" stroke-width="3"/>
+  <text x="102" y="205" font-family="Space Grotesk, sans-serif" font-size="28" fill="#1f5a45" font-weight="700">Writer</text>
+  <rect x="102" y="235" width="206" height="56" rx="10" fill="#e9f7f0" stroke="#79ad95"/>
+  <text x="122" y="270" font-family="IBM Plex Mono, monospace" font-size="20" fill="#0f3126">Schema v2</text>
+  <rect x="102" y="308" width="206" height="56" rx="10" fill="#e9f7f0" stroke="#79ad95"/>
+  <text x="122" y="343" font-family="IBM Plex Mono, monospace" font-size="20" fill="#0f3126">Data Record</text>
+  <text x="102" y="405" font-family="Space Grotesk, sans-serif" font-size="20" fill="#2d604e">Encode -> Binary payload</text>
+
+  <rect x="445" y="235" width="300" height="160" rx="20" fill="#ffffff" stroke="#4f8d76" stroke-width="3"/>
+  <text x="510" y="280" font-family="Space Grotesk, sans-serif" font-size="27" fill="#1c4e3b" font-weight="700">Kafka Topic</text>
+  <text x="485" y="325" font-family="IBM Plex Mono, monospace" font-size="20" fill="#234d3f">Compact binary bytes</text>
+
+  <rect x="860" y="160" width="270" height="310" rx="20" fill="#ffffff" stroke="#68a48b" stroke-width="3"/>
+  <text x="895" y="205" font-family="Space Grotesk, sans-serif" font-size="28" fill="#1f5a45" font-weight="700">Reader</text>
+  <rect x="892" y="235" width="206" height="56" rx="10" fill="#e9f7f0" stroke="#79ad95"/>
+  <text x="912" y="270" font-family="IBM Plex Mono, monospace" font-size="20" fill="#0f3126">Schema v2</text>
+  <rect x="892" y="308" width="206" height="56" rx="10" fill="#e9f7f0" stroke="#79ad95"/>
+  <text x="912" y="343" font-family="IBM Plex Mono, monospace" font-size="20" fill="#0f3126">Decoded Data</text>
+  <text x="892" y="405" font-family="Space Grotesk, sans-serif" font-size="20" fill="#2d604e">Decode with schema</text>
+
+  <line x1="340" y1="315" x2="445" y2="315" stroke="#235e47" stroke-width="4" marker-end="url(#arr2)"/>
+  <line x1="745" y1="315" x2="860" y2="315" stroke="#235e47" stroke-width="4" marker-end="url(#arr2)"/>
+
+  <text x="70" y="545" font-family="Space Grotesk, sans-serif" font-size="23" fill="#1f4e3c" font-weight="600">Same schema contract on both sides keeps producer and consumer compatible.</text>
+</svg>

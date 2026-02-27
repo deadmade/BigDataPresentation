@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-label="Ordering guarantee per partition">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f8fbff"/>
+      <stop offset="100%" stop-color="#e8f1ff"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#28456e"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1200" height="620" fill="url(#bg)"/>
+  <text x="70" y="90" font-family="Space Grotesk, sans-serif" font-size="34" fill="#12233d" font-weight="700">Ordering in Kafka</text>
+
+  <rect x="70" y="140" width="500" height="390" rx="20" fill="#ffffff" stroke="#6f8fb8" stroke-width="3"/>
+  <text x="95" y="185" font-family="Space Grotesk, sans-serif" font-size="26" fill="#1f3a5f" font-weight="700">Partition 0 (ordering guaranteed)</text>
+
+  <g font-family="IBM Plex Mono, monospace" font-size="21" fill="#0f1d31" font-weight="600">
+    <rect x="100" y="220" width="430" height="58" rx="10" fill="#eaf2ff" stroke="#7092c1"/>
+    <text x="122" y="256">Offset 11 - user=42 status=created</text>
+
+    <rect x="100" y="295" width="430" height="58" rx="10" fill="#dff0ff" stroke="#7092c1"/>
+    <text x="122" y="331">Offset 12 - user=42 status=paid</text>
+
+    <rect x="100" y="370" width="430" height="58" rx="10" fill="#eaf2ff" stroke="#7092c1"/>
+    <text x="122" y="406">Offset 13 - user=42 status=shipped</text>
+  </g>
+
+  <line x1="315" y1="430" x2="315" y2="505" stroke="#28456e" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="108" y="520" font-family="Space Grotesk, sans-serif" font-size="23" fill="#28456e" font-weight="600">Consumer reads strictly in this order</text>
+
+  <rect x="640" y="140" width="500" height="390" rx="20" fill="#ffffff" stroke="#b38c66" stroke-width="3"/>
+  <text x="665" y="185" font-family="Space Grotesk, sans-serif" font-size="26" fill="#5d3f25" font-weight="700">Across partitions (no global order)</text>
+
+  <g font-family="IBM Plex Mono, monospace" font-size="20" fill="#2f1b0d" font-weight="600">
+    <rect x="670" y="220" width="200" height="52" rx="10" fill="#fff4ea" stroke="#d39f6c"/>
+    <text x="690" y="252">P0: Offset 11</text>
+    <rect x="900" y="220" width="200" height="52" rx="10" fill="#f0f7ff" stroke="#7ea4d2"/>
+    <text x="920" y="252">P1: Offset 88</text>
+
+    <rect x="670" y="295" width="200" height="52" rx="10" fill="#f0f7ff" stroke="#7ea4d2"/>
+    <text x="690" y="327">P1: Offset 89</text>
+    <rect x="900" y="295" width="200" height="52" rx="10" fill="#fff4ea" stroke="#d39f6c"/>
+    <text x="920" y="327">P0: Offset 12</text>
+
+    <rect x="670" y="370" width="200" height="52" rx="10" fill="#fff4ea" stroke="#d39f6c"/>
+    <text x="690" y="402">P0: Offset 13</text>
+    <rect x="900" y="370" width="200" height="52" rx="10" fill="#f0f7ff" stroke="#7ea4d2"/>
+    <text x="920" y="402">P1: Offset 90</text>
+  </g>
+
+  <text x="665" y="468" font-family="Space Grotesk, sans-serif" font-size="22" fill="#6a4423" font-weight="600">Interleaving from multiple partitions is expected.</text>
+</svg>
