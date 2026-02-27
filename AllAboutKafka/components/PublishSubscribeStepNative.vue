@@ -1,0 +1,121 @@
+<script setup lang="ts">
+const props = withDefaults(defineProps<{ step: 1 | 2 | 3 | 4 }>(), {
+  step: 1,
+})
+
+const markerId = `ps2-arrow-step-${props.step}`
+const markerUrl = `url(#${markerId})`
+</script>
+
+<template>
+  <div class="ps2-wrap">
+    <div class="ps2-scroll">
+      <div class="ps2-canvas">
+        <svg class="ps2-lines" viewBox="0 0 1100 560" aria-hidden="true">
+          <defs>
+            <marker :id="markerId" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+              <path d="M0,0 L10,5 L0,10 z" />
+            </marker>
+          </defs>
+
+          <g v-if="props.step === 1" class="ps2-layer">
+            <path d="M470 114 V195 H550 V248" :marker-end="markerUrl" />
+            <path d="M630 114 V177 H550 V248" :marker-end="markerUrl" />
+          </g>
+
+          <g v-if="props.step === 2" class="ps2-layer">
+            <path d="M80 114 V230 H95 V448" :marker-end="markerUrl" />
+            <path d="M80 114 V215 H265 V448" :marker-end="markerUrl" />
+            <path d="M230 114 V198 H435 V448" :marker-end="markerUrl" />
+            <path d="M380 114 V184 H605 V448" :marker-end="markerUrl" />
+            <path d="M530 114 V210 H435 V448" :marker-end="markerUrl" />
+            <path d="M680 114 V222 H605 V448" :marker-end="markerUrl" />
+            <path d="M830 114 V205 H265 V448" :marker-end="markerUrl" />
+            <path d="M980 114 V230 H95 V448" :marker-end="markerUrl" />
+          </g>
+
+          <g v-if="props.step === 3" class="ps2-layer">
+            <path d="M80 114 V170" />
+            <path d="M230 114 V170" />
+            <path d="M380 114 V170" />
+            <path d="M530 114 V170" />
+            <path d="M680 114 V170" />
+            <path d="M830 114 V170" />
+            <path d="M980 114 V170" />
+            <path d="M80 170 H980" />
+            <path d="M530 170 V248" :marker-end="markerUrl" />
+            <path d="M530 342 V392" />
+            <path d="M95 392 H605" />
+            <path d="M95 392 V448" :marker-end="markerUrl" />
+            <path d="M265 392 V448" :marker-end="markerUrl" />
+            <path d="M435 392 V448" :marker-end="markerUrl" />
+            <path d="M605 392 V448" :marker-end="markerUrl" />
+          </g>
+
+          <g v-if="props.step === 4" class="ps2-layer">
+            <path d="M80 114 V170" />
+            <path d="M95 114 V190" />
+            <path d="M230 114 V170" />
+            <path d="M245 114 V190" />
+            <path d="M380 114 V170" />
+            <path d="M395 114 V190" />
+            <path d="M530 114 V170" />
+            <path d="M545 114 V190" />
+            <path d="M680 114 V170" />
+            <path d="M695 114 V190" />
+            <path d="M830 114 V170" />
+            <path d="M845 114 V190" />
+            <path d="M980 114 V170" />
+            <path d="M995 114 V190" />
+
+            <path d="M80 170 H980" />
+            <path d="M80 190 H980" />
+            <path d="M80 210 H925" />
+
+            <path d="M530 210 V248" :marker-end="markerUrl" />
+            <path d="M755 190 V248" :marker-end="markerUrl" />
+            <path d="M975 170 V248" :marker-end="markerUrl" />
+
+            <path d="M530 342 V392" />
+            <path d="M95 392 H605" />
+            <path d="M95 392 V448" :marker-end="markerUrl" />
+            <path d="M265 392 V448" :marker-end="markerUrl" />
+            <path d="M435 392 V448" :marker-end="markerUrl" />
+            <path d="M605 392 V448" :marker-end="markerUrl" />
+
+            <path d="M755 342 V392" />
+            <path d="M755 392 H925" />
+            <path d="M755 392 V448" :marker-end="markerUrl" />
+            <path d="M925 392 V448" :marker-end="markerUrl" />
+
+            <path d="M975 342 V448" :marker-end="markerUrl" />
+          </g>
+        </svg>
+
+        <div v-if="props.step === 1" class="ps2-card ps2-top ps2-step1-t1">Frontend<br />Server</div>
+        <div v-if="props.step === 1" class="ps2-card ps2-top ps2-step1-t2">Frontend<br />Server</div>
+        <div v-if="props.step >= 2" class="ps2-card ps2-top t1">Frontend<br />Server</div>
+        <div v-if="props.step >= 2" class="ps2-card ps2-top t2">Frontend<br />Server</div>
+        <div v-if="props.step >= 2" class="ps2-card ps2-top t3">Database<br />Server</div>
+        <div v-if="props.step >= 2" class="ps2-card ps2-top t4">Database<br />Slave</div>
+        <div v-if="props.step >= 2" class="ps2-card ps2-top t5">Chat<br />Server</div>
+        <div v-if="props.step >= 2" class="ps2-card ps2-top t6">Shopping<br />Cart</div>
+        <div v-if="props.step >= 2" class="ps2-card ps2-top t7">Backend<br />Server</div>
+
+        <div v-if="props.step === 1" class="ps2-card ps2-legacy">Metrics<br />Server</div>
+        <div v-if="props.step >= 3" class="ps2-card ps2-bus metrics">Metrics<br />Pub/Sub</div>
+        <div v-if="props.step === 4" class="ps2-card ps2-bus logging">Logging<br />Pub/Sub</div>
+        <div v-if="props.step === 4" class="ps2-card ps2-bus tracking">Tracking<br />Pub/Sub</div>
+
+        <div v-if="props.step >= 2" class="ps2-card ps2-bottom b1">Metrics UI</div>
+        <div v-if="props.step >= 2" class="ps2-card ps2-bottom b2">Metrics<br />Analysis</div>
+        <div v-if="props.step >= 2" class="ps2-card ps2-bottom b3">Active<br />Monitoring</div>
+        <div v-if="props.step >= 2" class="ps2-card ps2-bottom b4">Database<br />Monitor</div>
+
+        <div v-if="props.step === 4" class="ps2-card ps2-bottom b5">Log<br />Search</div>
+        <div v-if="props.step === 4" class="ps2-card ps2-bottom b6">Security<br />Analysis</div>
+        <div v-if="props.step === 4" class="ps2-card ps2-bottom b7">Offline<br />Processing</div>
+      </div>
+    </div>
+  </div>
+</template>

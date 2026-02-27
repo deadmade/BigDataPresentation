@@ -66,11 +66,25 @@ layout: center
 
 # Publish/Subscribe
 
-<PublishSubscribeNative />
+<PublishSubscribeStepNative :step="1" />
 
-<!--
-Klickfolge: Producer -> Topic -> Broker -> Subscriber Fan-out -> Final Snapshot.
--->
+---
+
+# Publish/Subscribe
+
+<PublishSubscribeStepNative :step="2" />
+
+---
+
+# Publish/Subscribe
+
+<PublishSubscribeStepNative :step="3" />
+
+---
+
+# Publish/Subscribe
+
+<PublishSubscribeStepNative :step="4" />
 
 ---
 

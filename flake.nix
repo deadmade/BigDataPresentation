@@ -36,7 +36,7 @@
         };
 
         # Python environment with dependencies
-        pythonEnv = pkgs.python312.withPackages (ps: with ps; [
+        pythonEnv = pkgs.python313.withPackages (ps: with ps; [
           zopfli 
           pip
         ]);
@@ -52,6 +52,8 @@
             pkgs.ripgrep
 
             pkgs.presenterm
+            pkgs.manim
+            pkgs.ffmpeg-full
           ];
 
           shellHook = ''
