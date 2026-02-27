@@ -4,6 +4,8 @@ theme:
     name: catppuccin-frappe
 ---
 
+> Legacy snapshot: this Marp-style deck is kept for reference only. The active deck is `slides.md` (Slidev), and legacy GIF assets/scripts were removed.
+
 <!-- font_size: 3 -->
 Organisatorisches
 ---
@@ -87,6 +89,12 @@ Kafka
 - Können deterministisch gelesen werden
 - Daten können im System verteilt werden
 <!-- speaker_note: Bietet zusätzliche Ausfallsicherheit + scaling-->
+<!-- end_slide -->
+
+<!-- font_size: 3 -->
+Kafka im Überblick
+---
+![](Images/generated/kafka-flow.gif)
 <!-- end_slide -->
 
 <!-- font_size: 3 -->
@@ -206,7 +214,7 @@ Consumer Group
 <!-- font_size: 3 -->
 Consumer Group
 ---
-![](Images/ConsumerGroup.png)
+![](Images/generated/consumer-group-rebalance.gif)
 <!-- end_slide -->
 
 <!-- font_size: 3 -->
@@ -252,7 +260,23 @@ Clusters
 <!-- font_size: 3 -->
 Retention
 ---
-- muss ich noch machen
+- Nachrichten bleiben auch nach dem Lesen verfügbar
+- Time-based Retention: Daten werden nach einer Zeit gelöscht
+- Size-based Retention: Daten werden gelöscht, wenn das Speicherlimit erreicht ist
+- Log Compaction: pro Key bleibt der neueste Stand erhalten
+<!-- end_slide -->
+
+<!-- font_size: 3 -->
+Retention Animation
+---
+![](Images/generated/retention-mode.gif)
+<!-- end_slide -->
+
+<!-- font_size: 2 -->
+Animation Rendering
+---
+- Render all deck animations: `python scripts/generate_gifs.py`
+- Rendering workflow: Manim scene render -> ffmpeg GIF export
 <!-- end_slide -->
 
 
