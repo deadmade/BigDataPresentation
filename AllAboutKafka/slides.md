@@ -109,11 +109,34 @@ Kafka = distributed commit log / distributed streaming platform.
 Durable Speicherung mit Recovery über Logs.
 -->
 
+<!-- ---
+
+# Kafka im Überblick
+
+ <KafkaFlowNative /> -->
+
+
+---
+layout: center
 ---
 
 # Kafka im Überblick
 
-<KafkaFlowNative />
+<KafkaOverviewLoopNative active-node="producer" next-label="Producer" phase="entry" />
+
+
+---
+
+# Producer
+
+<div class="k-loop-detail k-loop-detail-producer">
+  <div>
+    <ul>
+      <li>Producer erzeugen Messages und senden sie an Kafka</li>
+    </ul>
+  </div>
+</div>
+<LoopAutoAdvanceNative :delay-ms="3200" />
 
 ---
 
@@ -139,78 +162,6 @@ Kafka ist Format von Nachricht/Key egal.
 
 ---
 
-# Topics
-
-<div class="k-split">
-  <div>
-    <ul>
-      <li>Topic ist grob vergleichbar mit einer Datenbanktabelle</li>
-      <li>Jedes Topic hat mehrere Partitionen</li>
-      <li>Partitionen können über mehrere Broker verteilt sein</li>
-    </ul>
-  </div>
-  <div class="k-visual-card">
-    <img src="/images/topic-partitions.png" alt="Kafka topic with multiple partitions" class="max-h-72 mx-auto rounded-lg" />
-    <p class="k-figure-caption">Ein Topic skaliert horizontal über mehrere Partitionen.</p>
-  </div>
-</div>
-
----
-
-# Partition
-
-<div class="k-split">
-  <div>
-    <ul>
-      <li>Kleinste Speichereinheit in Kafka</li>
-      <li>Append-only Log mit chronologischem Verlauf</li>
-      <li>Message Key kann die Zielpartition bestimmen</li>
-      <li>Reihenfolge gilt strikt <strong>pro Partition</strong></li>
-    </ul>
-  </div>
-  <div class="k-visual-card">
-    <img src="/images/partition-ordering.png" alt="Ordering in a Kafka partition" class="max-h-72 mx-auto rounded-lg" />
-    <p class="k-figure-caption">Nur innerhalb einer Partition bleibt die Reihenfolge garantiert.</p>
-  </div>
-</div>
-
----
-layout: center
----
-
-# Ordering Guarantee
-
-<div class="k-visual-hero">
-  <img src="/images/ordering-guarantee.svg" alt="Ordering guarantee per partition and not globally per topic" class="max-h-95 mx-auto" />
-  <p class="k-figure-caption text-center">Globale Reihenfolge gibt es nicht. Garantiert ist nur die Reihenfolge innerhalb derselben Partition.</p>
-</div>
-
----
-
-# Topics am Beispiel
-
-<img src="/images/partition-topic.png" alt="Topic Partition example" class="max-h-102 mx-auto" />
-
----
-
-# Batches
-
-<div class="k-split">
-  <div>
-    <ul>
-      <li>Menge an Messages pro Topic und Partition</li>
-      <li>Verbessert Speicher- und Netzwerkeffizienz</li>
-      <li>Trade-off zwischen Latenz und Throughput</li>
-    </ul>
-  </div>
-  <div class="k-visual-card">
-    <img src="/images/batch-tradeoff.png" alt="Batch size tradeoff between latency and throughput" class="max-h-72 mx-auto rounded-lg" />
-    <p class="k-figure-caption">Größere Batches steigern Throughput, erhöhen aber oft die Latenz.</p>
-  </div>
-</div>
-
----
-
 # Schemas
 
 <div class="k-split">
@@ -220,10 +171,6 @@ layout: center
       <li>Versionierung verhindert Breaking Changes bei Producer/Consumer</li>
       <li>Schemas liegen oft in einer zentralen Registry</li>
     </ul>
-  </div>
-  <div class="k-visual-card">
-    <img src="/images/schema-registry-flow.png" alt="Schema registry flow between producers and consumers" class="max-h-72 mx-auto rounded-lg" />
-    <p class="k-figure-caption">Schema Registry synchronisiert Producer- und Consumer-Versionen.</p>
   </div>
 </div>
 
@@ -266,6 +213,164 @@ layout: center
 </div>
 
 ---
+
+# Partition
+
+<div class="k-split">
+  <div>
+    <ul>
+      <li>Kleinste Speichereinheit in Kafka</li>
+      <li>Append-only Log mit chronologischem Verlauf</li>
+      <li>Message Key kann die Zielpartition bestimmen</li>
+      <li>Reihenfolge gilt strikt pro Partition</li>
+    </ul>
+  </div>
+  <div class="k-visual-card">
+    <img src="/images/partition-topic.png" alt="Ordering in a Kafka partition" class="max-h-72 mx-auto rounded-lg" />
+  </div>
+</div>
+
+---
+
+# Batches
+
+<div class="k-split">
+  <div>
+    <ul>
+      <li>Menge an Messages pro Topic und Partition</li>
+      <li>Verbessert Speicher- und Netzwerkeffizienz</li>
+      <li>Trade-off zwischen Latenz und Throughput</li>
+    </ul>
+  </div>
+</div>
+
+---
+layout: center
+---
+
+# Kafka im Überblick
+
+<KafkaOverviewLoopNative active-node="topic" next-label="Topic" phase="return" />
+
+
+---
+
+# Topic
+
+<div class="k-loop-detail k-loop-detail-topic">
+  <div>
+    <ul>
+      <li>Topic ist grob vergleichbar mit einer Datenbanktabelle</li>
+      <li>Jedes Topic hat mehrere Partitionen</li>
+      <li>Partitionen können über mehrere Broker verteilt sein</li>
+    </ul>
+  </div>
+  <div class="k-visual-card">
+    <img src="/images/partition-topic.png" alt="Kafka topic with partitions" class="max-h-64 mx-auto rounded-lg" />
+  </div>
+</div>
+<LoopAutoAdvanceNative :delay-ms="3200" />
+
+---
+layout: center
+---
+
+# Kafka im Überblick
+
+<KafkaOverviewLoopNative active-node="broker" next-label="Broker" phase="return" />
+
+
+---
+
+# Brokers
+
+<div class="k-split">
+  <div>
+    <ul>
+      <li>Broker = ein Kafka-Server</li>
+      <li>Nimmt Messages an, vergibt Offsets und speichert sie</li>
+      <li>Liefert Messages an Consumer aus</li>
+      <li>Verarbeitet viele Partitionen mit hohem Durchsatz</li>
+    </ul>
+  </div>
+</div>
+<LoopAutoAdvanceNative :delay-ms="3200" />
+
+---
+
+# Broker Clusters
+
+<div class="k-split">
+  <div>
+    <ul>
+      <li>Broker sind für Clusterbetrieb ausgelegt</li>
+      <li>Ein Broker agiert als Controller</li>
+      <li>Controller überwacht Broker-Ausfälle und Partition-Zuteilung</li>
+      <li>Jede Partition hat einen Leader-Broker</li>
+    </ul>
+  </div>
+  <div class="k-visual-card">
+    <img src="/images/Cluster.png" alt="Kafka cluster with multiple brokers and partitions" class="max-h-72 mx-auto rounded-lg" />
+  </div>
+</div>
+
+---
+layout: center
+---
+
+# Kafka im Überblick
+
+<KafkaOverviewLoopNative active-node="consumer" next-label="Consumer Group" phase="return" />
+
+
+---
+
+# Consumers
+
+<div class="k-split">
+  <div>
+    <ul>
+      <li>Lesen Nachrichten in Erstellungsreihenfolge pro Partition</li>
+      <li>Speichern Offsets für idempotente Verarbeitung</li>
+      <li>Können jederzeit neu starten und fortsetzen</li>
+      <li>Auch bekannt als <em>subscribers</em> oder <em>readers</em></li>
+    </ul>
+  </div>
+</div>
+
+---
+
+# Consumer Group
+
+<div class="k-split">
+  <div>
+    <ul>
+      <li>Mehrere Consumer arbeiten als Gruppe</li>
+      <li>Eine Partition wird nur von einem Consumer der Gruppe gelesen</li>
+      <li>Skalierung erfolgt über mehr Consumer und Partitionen</li>
+    </ul>
+  </div>
+</div>
+
+
+---
+layout: center
+---
+
+# Ordering Guarantee
+
+<div class="k-visual-hero">
+  <img src="/images/ordering-guarantee.svg" alt="Ordering guarantee per partition and not globally per topic" class="max-h-95 mx-auto" />
+  <p class="k-figure-caption text-center">Globale Reihenfolge gibt es nicht. Garantiert ist nur die Reihenfolge innerhalb derselben Partition.</p>
+</div>
+
+---
+
+
+
+
+
+---
 layout: center
 ---
 
@@ -293,42 +398,6 @@ layout: center
   </div>
 </div>
 
----
-
-# Consumers
-
-<div class="k-split">
-  <div>
-    <ul>
-      <li>Lesen Nachrichten in Erstellungsreihenfolge pro Partition</li>
-      <li>Speichern Offsets für idempotente Verarbeitung</li>
-      <li>Können jederzeit neu starten und fortsetzen</li>
-      <li>Auch bekannt als <em>subscribers</em> oder <em>readers</em></li>
-    </ul>
-  </div>
-  <div class="k-visual-card">
-    <img src="/images/consumer-offset-commit.png" alt="Consumer offset commit and resume flow" class="max-h-72 mx-auto rounded-lg" />
-    <p class="k-figure-caption">Offset-Commits entscheiden, ab welcher Nachricht erneut gelesen wird.</p>
-  </div>
-</div>
-
----
-
-# Consumer Group
-
-<div class="k-split">
-  <div>
-    <ul>
-      <li>Mehrere Consumer arbeiten als Gruppe</li>
-      <li>Eine Partition wird nur von einem Consumer der Gruppe gelesen</li>
-      <li>Skalierung erfolgt über mehr Consumer und Partitionen</li>
-    </ul>
-  </div>
-  <div class="k-visual-card">
-    <img src="/images/ConsumerGroup.png" alt="Kafka consumer group partition assignment" class="max-h-72 mx-auto rounded-lg" />
-    <p class="k-figure-caption">Partitionen werden exklusiv auf aktive Consumer verteilt.</p>
-  </div>
-</div>
 
 ---
 layout: two-cols
@@ -357,44 +426,9 @@ layout: center
   subtitle="Verfügbarkeit, Replikation und Datenhaltung im Betrieb"
 />
 
----
 
-# Brokers
 
-<div class="k-split">
-  <div>
-    <ul>
-      <li>Broker = ein Kafka-Server</li>
-      <li>Nimmt Nachrichten an, vergibt Offsets und speichert sie</li>
-      <li>Liefert Messages an Consumer aus</li>
-      <li>Verarbeitet viele Partitionen mit hohem Durchsatz</li>
-    </ul>
-  </div>
-  <div class="k-visual-card">
-    <img src="/images/kafka-overview.png" alt="Broker role in Kafka data flow" class="max-h-72 mx-auto rounded-lg" />
-    <p class="k-figure-caption">Der Broker ist der zentrale Knoten für Persistenz und Auslieferung.</p>
-  </div>
-</div>
 
----
-
-# Clusters
-
-<div class="k-split">
-  <div>
-    <ul>
-      <li>Broker sind für Clusterbetrieb ausgelegt</li>
-      <li>Ein Broker agiert als Controller</li>
-      <li>Controller überwacht Broker-Ausfälle und Partition-Zuteilung</li>
-      <li>Jede Partition hat einen Leader-Broker</li>
-      <li>Replikation erhöht Ausfallsicherheit</li>
-    </ul>
-  </div>
-  <div class="k-visual-card">
-    <img src="/images/Cluster.png" alt="Kafka cluster with multiple brokers and partitions" class="max-h-72 mx-auto rounded-lg" />
-    <p class="k-figure-caption">Cluster kombinieren Lastverteilung mit Leader/Follower-Replikation.</p>
-  </div>
-</div>
 
 ---
 layout: center
@@ -425,5 +459,4 @@ layout: center
 
 1. Apache Kafka "Powered By" page: https://kafka.apache.org/powered-by/
 2. Kafka: The Definitive Guide (Neha Narkhede, Gwen Shapira, Todd Palino, O'Reilly, 2017), ISBN 978-1-491-93616-0
-3. Slidev-native animations authored in-repo via Vue components (`components/*.vue`)
-4. In-repo diagrams authored for this deck: `/public/images/ordering-guarantee.svg`, `/public/images/avro-pipeline.svg`, `/public/images/replication-failover.svg`
+
