@@ -9,9 +9,16 @@
     </div>
 
     <div class="retention-states">
-      <p v-click="2"><strong>Time-based:</strong> Älteste Events laufen nach Zeitfenster aus.</p>
-      <p v-click="3"><strong>Size-based:</strong> Bei voller Log-Größe werden alte Segmente entfernt.</p>
-      <p v-click="4"><strong>Compaction:</strong> Pro Key bleibt der neueste Wert bestehen.</p>
+      <p v-click="2">
+        <strong>Time-based:</strong> Älteste Events laufen nach Zeitfenster aus.
+      </p>
+      <p v-click="3">
+        <strong>Size-based:</strong> Bei voller Log-Größe werden alte Segmente
+        entfernt.
+      </p>
+      <p v-click="4">
+        <strong>Compaction:</strong> Pro Key bleibt der neueste Wert bestehen.
+      </p>
     </div>
   </div>
 </template>

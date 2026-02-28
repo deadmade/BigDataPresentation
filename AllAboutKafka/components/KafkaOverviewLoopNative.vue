@@ -1,18 +1,18 @@
 <script setup lang="ts">
-type NodeId = 'producer' | 'topic' | 'broker' | 'consumer'
+type NodeId = "producer" | "topic" | "broker" | "consumer";
 
 defineProps<{
-  activeNode: NodeId
-  nextLabel: string
-  phase?: 'entry' | 'return'
-}>()
+  activeNode: NodeId;
+  nextLabel: string;
+  phase?: "entry" | "return";
+}>();
 
-const nodes: { id: NodeId, title: string, subtitle: string }[] = [
-  { id: 'producer', title: 'Producer' },
-  { id: 'topic', title: 'Topic'},
-  { id: 'broker', title: 'Broker'},
-  { id: 'consumer', title: 'Consumer'},
-]
+const nodes: { id: NodeId; title: string; subtitle: string }[] = [
+  { id: "producer", title: "Producer" },
+  { id: "topic", title: "Topic" },
+  { id: "broker", title: "Broker" },
+  { id: "consumer", title: "Consumer" },
+];
 </script>
 
 <template>
@@ -37,7 +37,6 @@ const nodes: { id: NodeId, title: string, subtitle: string }[] = [
       <div class="k-loop-particle k-loop-particle-c"></div>
     </div>
 
-    <p class="k-loop-caption">
-    </p>
+    <p class="k-loop-caption"></p>
   </div>
 </template>

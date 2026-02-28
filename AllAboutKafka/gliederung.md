@@ -2,14 +2,14 @@
 - Wieso Lohnt es sich zuzuhören (80% Unternehmen Benutzen Kafka in den Forbes 100 -> https://kafka.apache.org/powered-by/). Verweiß auf Mara's Präsentation
 - Kurzes wiederholen was Public/Subscription ist. (Servies Kommmunizieren direkt miteinander vs. Kafka) -> hier ein bisschen auf die alternativen eingehen (Redis/Mqtt idk) wichtig um zu verstehen was Kafka ausmacht
 - Was ist Kafka?
-    - Messages and Batches
-    - Schemas
-    - Topics and Partitions
-    - Producers and Consumers
-    - Brokers and Clusters
-    - Multiple Clusters
+  - Messages and Batches
+  - Schemas
+  - Topics and Partitions
+  - Producers and Consumers
+  - Brokers and Clusters
+  - Multiple Clusters
 - Was Unterscheidet Kafka? -> wichtig um zu verstehen wo Kafka Sinn macht und wo es auch einfach zu groß ist um grundsatz zu legen, für Mara
-    - Multiple Producers
-    - Multiple Consumers
-    - Disk-Based Retention
-    - Scalable
+  - Multiple Producers
+  - Multiple Consumers
+  - Disk-Based Retention
+  - Scalable

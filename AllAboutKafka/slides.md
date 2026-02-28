@@ -208,7 +208,6 @@ Kafka ist Format von Nachricht/Key egal.
   </div>
   <div class="k-visual-card">
     <img src="/images/avro-pipeline.svg" alt="Avro writer and reader pipeline" class="max-h-72 mx-auto rounded-lg" />
-    <p class="k-figure-caption">Gleiches Schema-Verständnis reduziert Integrationsfehler.</p>
   </div>
 </div>
 
@@ -315,6 +314,12 @@ layout: center
 </div>
 
 ---
+
+# Cluster-Architektur
+
+<img src="/images/Cluster.png" alt="Kafka Cluster" class="max-h-105 mx-auto" />
+
+---
 layout: center
 ---
 
@@ -333,7 +338,6 @@ layout: center
       <li>Lesen Nachrichten in Erstellungsreihenfolge pro Partition</li>
       <li>Speichern Offsets für idempotente Verarbeitung</li>
       <li>Können jederzeit neu starten und fortsetzen</li>
-      <li>Auch bekannt als <em>subscribers</em> oder <em>readers</em></li>
     </ul>
   </div>
 </div>
@@ -350,108 +354,17 @@ layout: center
       <li>Skalierung erfolgt über mehr Consumer und Partitionen</li>
     </ul>
   </div>
-</div>
-
-
----
-layout: center
----
-
-# Ordering Guarantee
-
-<div class="k-visual-hero">
-  <img src="/images/ordering-guarantee.svg" alt="Ordering guarantee per partition and not globally per topic" class="max-h-95 mx-auto" />
-  <p class="k-figure-caption text-center">Globale Reihenfolge gibt es nicht. Garantiert ist nur die Reihenfolge innerhalb derselben Partition.</p>
-</div>
-
----
-
-
-
-
-
----
-layout: center
----
-
-<SectionBreak
-  title="Producers & Consumers"
-  subtitle="Wie Daten geschrieben, gelesen und skaliert werden"
-/>
-
----
-
-# Producers
-
-<div class="k-split">
-  <div>
-    <ul>
-      <li>Erstellen neue Messages</li>
-      <li>Wählen das Ziel-Topic</li>
-      <li>Bestimmen optional die Ziel-Partition</li>
-      <li>Auch bekannt als <em>publishers</em> oder <em>writers</em></li>
-    </ul>
-  </div>
-  <div class="k-visual-card">
-    <img src="/images/producer-partitioning.png" alt="Producer partitioning strategy" class="max-h-72 mx-auto rounded-lg" />
-    <p class="k-figure-caption">Producer steuern über Key und Strategie, in welche Partition geschrieben wird.</p>
+    <div class="k-visual-card">
+    <img src="/images/ConsumerGroup.png" alt="Kafka cluster with multiple brokers and partitions" class="max-h-72 mx-auto rounded-lg" />
   </div>
 </div>
 
-
----
-layout: two-cols
 ---
 
-# Consumer Group: Rebalancing
+# Consumer Group
 
-::left::
-<v-clicks>
+<img src="/images/ConsumerGroup.png" alt="Kafka cluster with multiple brokers and partitions" class="max-h-72 mx-auto rounded-lg" />
 
-- Consumer können horizontal skaliert werden
-- Fällt ein Consumer aus, werden Partitionen neu verteilt
-- Ziel: Last verteilen und Ausfälle abfangen
-
-</v-clicks>
-
-::right::
-<ConsumerRebalanceNative />
-
----
-layout: center
----
-
-<SectionBreak
-  title="Brokers & Clusters"
-  subtitle="Verfügbarkeit, Replikation und Datenhaltung im Betrieb"
-/>
-
-
-
-
-
----
-layout: center
----
-
-# Replication & Failover
-
-<div class="k-visual-hero">
-  <img src="/images/replication-failover.svg" alt="Kafka replication and failover sequence across brokers" class="max-h-95 mx-auto" />
-  <p class="k-figure-caption text-center">Fällt ein Leader aus, übernimmt ein replizierter Follower die Partition.</p>
-</div>
-
----
-
-# Cluster-Architektur
-
-<img src="/images/Cluster.png" alt="Kafka Cluster" class="max-h-105 mx-auto" />
-
----
-
-# Retention
-
-<RetentionModeNative />
 
 ---
 
