@@ -63,11 +63,7 @@ Ein einzelner Kafka-Server wird als Broker bezeichnet.
 Mehrere Broker bilden zusammen einen Cluster.
 
 - **Controller:** Ein automatisch gewählter Broker übernimmt zusätzlich die Rolle des _Controllers_. Er steuert administrative Aufgaben, wie die Zuweisung von Partitions zu den Brokern und die Überwachung von Ausfällen.
-- **Leader & Replikation:** Jede Partition wird von einem primären Broker verwaltet, dem sogenannten **Leader**.
-    - Alle Lese- und Schreibzugriffe der Clients erfolgen zwingend über diesen Leader.
-    - Um Datenverlust vorzubeugen, wird die Partition auf andere Broker kopiert (**Replikation**). Fällt der Leader aus, übernimmt ein Replikat nahtlos die Führung.
 
-![[Pasted image 20260228163605.png]]
 ## Quellen
 1. Apache Kafka "Powered By" page: https://kafka.apache.org/powered-by/
 2. Kafka: The Definitive Guide (Neha Narkhede, Gwen Shapira, Todd Palino, O'Reilly, 2017), ISBN 978-1-491-93616-0
