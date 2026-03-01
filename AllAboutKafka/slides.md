@@ -115,7 +115,6 @@ Durable Speicherung mit Recovery über Logs.
 
  <KafkaFlowNative /> -->
 
-
 ---
 layout: center
 ---
@@ -123,7 +122,6 @@ layout: center
 # Kafka im Überblick
 
 <KafkaOverviewLoopNative active-node="producer" next-label="Producer" phase="entry" />
-
 
 ---
 
@@ -251,7 +249,6 @@ layout: center
 
 <KafkaOverviewLoopNative active-node="topic" next-label="Topic" phase="return" />
 
-
 ---
 
 # Topic
@@ -277,7 +274,6 @@ layout: center
 # Kafka im Überblick
 
 <KafkaOverviewLoopNative active-node="broker" next-label="Broker" phase="return" />
-
 
 ---
 
@@ -327,7 +323,6 @@ layout: center
 
 <KafkaOverviewLoopNative active-node="consumer" next-label="Consumer Group" phase="return" />
 
-
 ---
 
 # Consumers
@@ -354,7 +349,7 @@ layout: center
       <li>Skalierung erfolgt über mehr Consumer und Partitionen</li>
     </ul>
   </div>
-    <div class="k-visual-card">
+  <div class="k-visual-card">
     <img src="/images/ConsumerGroup.png" alt="Kafka cluster with multiple brokers and partitions" class="max-h-72 mx-auto rounded-lg" />
   </div>
 </div>
@@ -365,11 +360,9 @@ layout: center
 
 <img src="/images/ConsumerGroup.png" alt="Kafka cluster with multiple brokers and partitions" class="max-h-72 mx-auto rounded-lg" />
 
-
 ---
 
 # Sources
 
 1. Apache Kafka "Powered By" page: https://kafka.apache.org/powered-by/
 2. Kafka: The Definitive Guide (Neha Narkhede, Gwen Shapira, Todd Palino, O'Reilly, 2017), ISBN 978-1-491-93616-0
-
