@@ -5,17 +5,16 @@ Apache Kafka ist ein Publish/Subscribe-Messaging-System, das oft als Distributed
 - **Speicherung:** Daten werden dauerhaft und in chronologischer Reihenfolge gespeichert.
 - **Abruf:** Deterministisches Auslesen der Daten ist jederzeit möglich.
 - **Architektur:** Verteiltes System ->  hohe Ausfallsicherheit + optimale Skalierbarkeit.
-
 ## Messages und Batches
 
 Die grundlegende Dateneinheit in Kafka ist die **Message**.
 
-- **Message:** Technisch gesehen ein simples _Array of Bytes_. Kafka selbst interpretiert den Inhalt nicht.
-- **Key (optional):** Ebenfalls ein Byte-Array. Dient als Metadatum, um Messages kontrolliert in spezifische _Partitions_ zu schreiben.
+- **Message:** Technisch gesehen ein simples Array of Bytes. Kafka selbst interpretiert den Inhalt nicht.
+- **Key (optional):** Ebenfalls ein Byte-Array. Dient als Metadatum, um Messages kontrolliert in spezifische Partitions zu schreiben.
 - **Offset**: Identifiziert die Position in der Partition
 - **Batches:** Messages für dasselbe Topic/dieselbe Partition werden gebündelt übertragen.
     - _Vorteil:_ Reduziert den Netzwerk-Overhead.
-    - _Tradeoff:_ Abwägung zwischen Latenz (Latency) und Durchsatz (Throughput) – größere Batches erhöhen den Durchsatz, aber auch die Übertragungsdauer der einzelnen Message.
+    - _Tradeoff:_ Abwägung zwischen  Latency und Throughput – größere Batches erhöhen den Durchsatz, aber auch die Übertragungsdauer der einzelnen Message.
 ## Schemas
 Obwohl Kafka die Daten nur als Bytes sieht, benötigen die Anwendungen eine klare Datenstruktur.
 
@@ -36,7 +35,7 @@ Kafka organisiert Daten in Kategorien und unterteilt diese weiter für maximale 
 
 ## Producers und Consumers
 
-Die Nutzer des Kafka-Systems (Clients) werden in zwei grundlegende Typen unterteilt. 
+Die Nutzer des Kafka-Systems werden in zwei grundlegende Typen unterteilt. 
 
 - **Producers**: Producers erstellen neue Messages und senden sie an ein spezifisches Topic.
 - **Consumers**: Consumers abonnieren Topics und lesen die darin enthaltenen Messages in exakt der Reihenfolge, in der sie geschrieben wurden. Der Consumer merkt sich den Offset der zuletzt gelesenen Message. Fällt ein Consumer aus oder pausiert er, kann er später exakt an dieser Stelle nahtlos weiterlesen.
@@ -51,7 +50,7 @@ Um große Datenmengen effizient zu verarbeiten, arbeiten Consumers oft als **Con
 
 ## Brokers und Clusters
 
-Kafka ist für den Betrieb in einem Server-Verbund (Cluster) ausgelegt, um maximale Leistung und Ausfallsicherheit zu gewährleisten.
+Kafka ist für den Betrieb in einem Cluster ausgelegt, um maximale Leistung und Ausfallsicherheit zu gewährleisten.
 ### Der Broker
 
 Ein einzelner Kafka-Server wird als Broker bezeichnet.

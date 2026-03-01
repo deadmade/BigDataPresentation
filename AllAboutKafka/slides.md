@@ -313,6 +313,28 @@ Erlaubt Wartung an Applikationen: Consumer können offline gehen und später ohn
 <img src="/images/Cluster.png" alt="Kafka Cluster" class="max-h-105 mx-auto" />
 
 ---
+
+# Replikation & Failover
+
+<div class="k-split">
+  <div>
+    <ul>
+      <li>Partitionen können auf mehrere Broker repliziert werden</li>
+      <li><strong>Leader:</strong> Verarbeitet alle Schreib- und Lesezugriffe</li>
+      <li><strong>Follower:</strong> Kopieren Daten passiv vom Leader (Redundanz)</li>
+      <li><strong>Failover:</strong> Automatischer Leader-Wechsel bei Ausfall</li>
+      <li>Producers/Consumers müssen sich zum Leader verbinden</li>
+    </ul>
+  </div>
+</div>
+
+<!--
+Replikation bietet Redundanz: Fällt ein Broker aus, kann ein anderer (Replika) die Leadership übernehmen.
+Wichtig: Alle Clients (Producers/Consumers) kommunizieren immer direkt mit dem Leader einer Partition.
+Der Controller überwacht den Status der Broker und stößt bei Ausfällen die Neuwahl des Leaders an.
+-->
+
+---
 layout: center
 ---
 
