@@ -63,10 +63,10 @@ const packetRoutes = computed<PacketRoute[]>(() => {
       { path: pid("s3-prod-5"), dur: "2s", begin: "0.2s" },
       { path: pid("s3-prod-6"), dur: "2s", begin: "0.6s" },
       { path: pid("s3-prod-7"), dur: "2s", begin: "1s" },
-      { path: pid("s3-to-metrics-ui"), dur: "1.4s", begin: "0.85s" },
-      { path: pid("s3-to-metrics-analysis"), dur: "1.4s", begin: "1.0s" },
-      { path: pid("s3-to-active-monitoring"), dur: "1.45s", begin: "1.15s" },
-      { path: pid("s3-to-db-monitor"), dur: "1.45s", begin: "1.3s" },
+      { path: pid("s3-m-c1-full"), dur: "1.8s", begin: "0.85s" },
+      { path: pid("s3-m-c2-full"), dur: "1.8s", begin: "1.0s" },
+      { path: pid("s3-m-c3-full"), dur: "1.8s", begin: "1.15s" },
+      { path: pid("s3-m-c4-full"), dur: "1.8s", begin: "1.3s" },
     ];
   }
 
@@ -78,12 +78,12 @@ const packetRoutes = computed<PacketRoute[]>(() => {
     { path: pid("s4-flow-5"), dur: "2.7s", begin: "0.8s" },
     { path: pid("s4-flow-6"), dur: "2.9s", begin: "1s" },
     { path: pid("s4-flow-7"), dur: "3.1s", begin: "1.2s" },
-    { path: pid("s4-m-c1"), dur: "1.4s", begin: "1.5s" },
-    { path: pid("s4-m-c2"), dur: "1.4s", begin: "1.7s" },
-    { path: pid("s4-m-c3"), dur: "1.4s", begin: "1.9s" },
-    { path: pid("s4-m-c4"), dur: "1.4s", begin: "2.1s" },
-    { path: pid("s4-l-c1"), dur: "1.4s", begin: "1.8s" },
-    { path: pid("s4-l-c2"), dur: "1.4s", begin: "2.0s" },
+    { path: pid("s4-m-c1-full"), dur: "1.8s", begin: "1.5s" },
+    { path: pid("s4-m-c2-full"), dur: "1.8s", begin: "1.7s" },
+    { path: pid("s4-m-c3-full"), dur: "1.8s", begin: "1.9s" },
+    { path: pid("s4-m-c4-full"), dur: "1.8s", begin: "2.1s" },
+    { path: pid("s4-l-c1-full"), dur: "1.8s", begin: "1.8s" },
+    { path: pid("s4-l-c2-full"), dur: "1.8s", begin: "2.0s" },
     { path: pid("s4-t-c1-full"), dur: "1.8s", begin: "2.2s" },
   ];
 });
@@ -165,36 +165,20 @@ const packetRoutes = computed<PacketRoute[]>(() => {
           </g>
 
           <g v-if="props.step === 3" class="ps2-layer active">
-            <path :id="pid('s3-prod-1')" d="M80 114 V170 H530 V255" />
-            <path :id="pid('s3-prod-2')" d="M230 114 V170 H530 V255" />
-            <path :id="pid('s3-prod-3')" d="M380 114 V170 H530 V255" />
-            <path :id="pid('s3-prod-4')" d="M530 114 V255" />
-            <path :id="pid('s3-prod-5')" d="M680 114 V170 H530 V255" />
-            <path :id="pid('s3-prod-6')" d="M830 114 V170 H530 V255" />
-            <path :id="pid('s3-prod-7')" d="M980 114 V170 H530 V255" />
+            <path :id="pid('s3-prod-1')" :d="`M80 100 V170 H${step4.metricsHubX} V${step4.pubSubTopY}`" />
+            <path :id="pid('s3-prod-2')" :d="`M230 100 V170 H${step4.metricsHubX} V${step4.pubSubTopY}`" />
+            <path :id="pid('s3-prod-3')" :d="`M380 100 V170 H${step4.metricsHubX} V${step4.pubSubTopY}`" />
+            <path :id="pid('s3-prod-4')" :d="`M530 100 V${step4.pubSubTopY}`" />
+            <path :id="pid('s3-prod-5')" :d="`M680 100 V170 H${step4.metricsHubX} V${step4.pubSubTopY}`" />
+            <path :id="pid('s3-prod-6')" :d="`M830 100 V170 H${step4.metricsHubX} V${step4.pubSubTopY}`" />
+            <path :id="pid('s3-prod-7')" :d="`M980 100 V170 H${step4.metricsHubX} V${step4.pubSubTopY}`" />
             <path d="M80 170 H980" />
-            <path d="M530 320 V392" />
-            <path d="M95 392 H605" />
-            <path
-              :id="pid('s3-to-metrics-ui')"
-              d="M95 392 V455"
-              :marker-end="markerUrl"
-            />
-            <path
-              :id="pid('s3-to-metrics-analysis')"
-              d="M265 392 V455"
-              :marker-end="markerUrl"
-            />
-            <path
-              :id="pid('s3-to-active-monitoring')"
-              d="M435 392 V455"
-              :marker-end="markerUrl"
-            />
-            <path
-              :id="pid('s3-to-db-monitor')"
-              d="M605 392 V455"
-              :marker-end="markerUrl"
-            />
+
+            <!-- Hub to Consumers -->
+            <path :d="`M${step4.metricsHubX} ${step4.pubSubBottomY} V${step4.bottomBusY}`" />
+            <path :d="`M95 ${step4.bottomBusY} H605`" />
+            <path v-for="(x, i) in step4.metricsConsumerXs" :key="`s3-m-c-${x}`" :id="pid(`s3-m-c${i+1}`)" :d="`M${x} ${step4.bottomBusY} V${step4.consumerTopY}`" :marker-end="markerUrl" />
+            <path v-for="(x, i) in step4.metricsConsumerXs" :key="`s3-m-c-full-${x}`" :id="pid(`s3-m-c${i+1}-full`)" :d="`M${step4.metricsHubX} ${step4.pubSubBottomY} V${step4.bottomBusY} H${x} V${step4.consumerTopY}`" fill="none" />
           </g>
 
           <g v-if="props.step === 4" class="ps2-layer active">
@@ -222,10 +206,12 @@ const packetRoutes = computed<PacketRoute[]>(() => {
             <path :d="`M${step4.metricsHubX} ${step4.pubSubBottomY} V${step4.bottomBusY}`" />
             <path :d="`M95 ${step4.bottomBusY} H605`"/>
             <path v-for="(x, i) in step4.metricsConsumerXs" :key="`s4-m-c-${x}`" :id="pid(`s4-m-c${i+1}`)" :d="`M${x} ${step4.bottomBusY} V${step4.consumerTopY}`" :marker-end="markerUrl" />
+            <path v-for="(x, i) in step4.metricsConsumerXs" :key="`s4-m-c-full-${x}`" :id="pid(`s4-m-c${i+1}-full`)" :d="`M${step4.metricsHubX} ${step4.pubSubBottomY} V${step4.bottomBusY} H${x} V${step4.consumerTopY}`" fill="none" />
 
             <path :d="`M${step4.loggingHubX} ${step4.pubSubBottomY} V${step4.bottomBusY}`" />
             <path :d="`M745 ${step4.bottomBusY} H878`" />
             <path v-for="(x, i) in step4.loggingConsumerXs" :key="`s4-l-c-${x}`" :id="pid(`s4-l-c${i+1}`)" :d="`M${x} ${step4.bottomBusY} V${step4.consumerTopY}`" :marker-end="markerUrl" />
+            <path v-for="(x, i) in step4.loggingConsumerXs" :key="`s4-l-c-full-${x}`" :id="pid(`s4-l-c${i+1}-full`)" :d="`M${step4.loggingHubX} ${step4.pubSubBottomY} V${step4.bottomBusY} H${x} V${step4.consumerTopY}`" fill="none" />
 
             <path :d="`M${step4.trackingHubX} ${step4.pubSubBottomY} V${step4.bottomBusY} H${step4.trackingConsumerX}`" />
             <path :id="pid('s4-t-c1')" :d="`M${step4.trackingConsumerX} ${step4.bottomBusY} V${step4.consumerTopY}`" :marker-end="markerUrl" />

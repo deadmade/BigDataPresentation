@@ -93,8 +93,8 @@ layout: center
   <div>
     <ul>
       <li>Publish/Subscribe-Messaging-System</li>
-      <li>Dauerhafte Speicherung als Commit Log</li>
-      <li>Deterministisch lesbar über Offsets</li>
+      <li>Dauerhafte Speicherung</li>
+      <li>Deterministisch lesbar</li>
       <li>Datenverteilung über mehrere Systeme</li>
     </ul>
   </div>
@@ -105,14 +105,9 @@ layout: center
 
 <!--
 Kafka = distributed commit log / distributed streaming platform.
-Durable Speicherung mit Recovery über Logs.
+
+Schutz for Ausfall + Scaling
 -->
-
-<!-- ---
-
-# Kafka im Überblick
-
- <KafkaFlowNative /> -->
 
 ---
 layout: center
@@ -132,8 +127,16 @@ layout: center
       <li>Producer erzeugen Messages und senden sie an Kafka</li>
     </ul>
   </div>
+  <div>
+    <ProducerGroupNative />
+  </div>
 </div>
 <LoopAutoAdvanceNative :delay-ms="3200" />
+
+<!--
+
+
+-->
 
 ---
 
@@ -169,26 +172,14 @@ Kafka ist Format von Nachricht/Key egal.
       <li>Schemas liegen oft in einer zentralen Registry</li>
     </ul>
   </div>
+  <SchemaRegistryNative />
 </div>
 
 ---
 
 # Schema-Formate
 
-<div class="k-icon-row">
-  <div class="k-icon-item">
-    <h3>JSON</h3>
-    <p>Einfach, lesbar, weit verbreitet.</p>
-  </div>
-  <div class="k-icon-item">
-    <h3>XML</h3>
-    <p>Streng strukturiert, aber eher verbose.</p>
-  </div>
-  <div class="k-icon-item">
-    <h3>Apache Avro</h3>
-    <p>Kompakt, schema-basiert, performant.</p>
-  </div>
-</div>
+<SchemaFormatsNative />
 
 
 ---
@@ -221,6 +212,7 @@ Kafka ist Format von Nachricht/Key egal.
       <li>Trade-off zwischen Latenz und Throughput</li>
     </ul>
   </div>
+  <BatchVisualNative />
 </div>
 
 ---
@@ -270,8 +262,31 @@ layout: center
       <li>Verarbeitet viele Partitionen mit hohem Durchsatz</li>
     </ul>
   </div>
+  <BrokerGroupNative />
 </div>
 <LoopAutoAdvanceNative :delay-ms="3200" />
+
+---
+
+# Disk-basierte Retention
+
+<div class="k-split">
+  <div>
+    <ul>
+      <li>Messages werden dauerhaft auf Disk gespeichert</li>
+      <li>Konfigurierbare Regeln pro Topic (Zeit oder Größe)</li>
+      <li>Consumer müssen nicht in Echtzeit arbeiten</li>
+      <li>Schutz vor Datenverlust bei Lastspitzen oder Wartung</li>
+    </ul>
+  </div>
+  <RetentionModeNative />
+</div>
+
+<!--
+Durable message retention bedeutet, dass Consumer nicht in Echtzeit arbeiten müssen.
+Messages werden auf Disk committet und nach konfigurierten Regeln (Zeit/Größe) behalten.
+Erlaubt Wartung an Applikationen: Consumer können offline gehen und später ohne Datenverlust dort weitermachen, wo sie aufgehört haben.
+-->
 
 ---
 
@@ -317,6 +332,7 @@ layout: center
       <li>Können jederzeit neu starten und fortsetzen</li>
     </ul>
   </div>
+  <ConsumerGroupNative />
 </div>
 
 ---
@@ -341,6 +357,15 @@ layout: center
 # Consumer Group
 
 <img src="/images/ConsumerGroup.png" alt="Kafka cluster with multiple brokers and partitions" class="max-h-72 mx-auto rounded-lg" />
+
+---
+layout: center
+---
+
+<SectionBreak
+  title="Wieso Kafka?"
+/>
+
 
 ---
 

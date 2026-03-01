@@ -20,3 +20,6 @@
 - könntest du mir bitte dieses bild erklären (Bild Topics am Beispiel)
 - Hey, bitte verbessere die Rechtschreibfehler in der AllAboutKafka.md präsentation
 - Hey, could you please genate an Image that shows the basic apache kafka architecture
+- Do you have an good Idea what I could add(image idk) to the Schemas Slide?
+- I would like to add a bit of "pep" to the Schema-Format. What would be good?
+- could you please add the brokers from public/subscribe slide to the brokers slide similiar to the producers?
