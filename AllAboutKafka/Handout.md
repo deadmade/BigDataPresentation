@@ -63,6 +63,20 @@ Mehrere Broker bilden zusammen einen Cluster.
 
 - **Controller:** Ein automatisch gewählter Broker übernimmt zusätzlich die Rolle des _Controllers_. Er steuert administrative Aufgaben, wie die Zuweisung von Partitions zu den Brokern und die Überwachung von Ausfällen.
 
+### Replikation & Failover
+Daten werden im Cluster für maximale Sicherheit dupliziert:
+- **Leader:** Jede Partition hat einen Leader-Broker, der alle Schreib- und Lesezugriffe verarbeitet.
+- **Follower:** Diese Broker kopieren die Daten vom Leader (passive Redundanz).
+- **Failover:** Fällt der Leader aus, wird automatisch ein Follower zum neuen Leader gewählt.
+- **Verbindung:** Producers und Consumers kommunizieren immer direkt mit dem Leader einer Partition.
+
+## Disk-basierte Retention
+Nachrichten werden dauerhaft auf der Festplatte gespeichert, was Kafka von reinen In-Memory-Systemen unterscheidet.
+
+- **Konfiguration:** Pro Topic wird festgelegt, wie lange (Zeit) oder bis zu welcher Größe (Bytes) Daten aufbewahrt werden.
+- **Vorteil:** Consumer müssen nicht in Echtzeit arbeiten. Sie können offline gehen (z. B. für Wartung) und später ohne Datenverlust dort fortfahren, wo sie aufgehört haben.
+- **Schutz:** Das System bietet Schutz vor Datenverlust bei Lastspitzen, da Nachrichten sicher auf Disk committet werden.
+
 ## Quellen
 1. Apache Kafka "Powered By" page: https://kafka.apache.org/powered-by/
 2. Kafka: The Definitive Guide (Neha Narkhede, Gwen Shapira, Todd Palino, O'Reilly, 2017), ISBN 978-1-491-93616-0

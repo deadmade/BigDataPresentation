@@ -381,15 +381,6 @@ layout: center
 <img src="/images/ConsumerGroup.png" alt="Kafka cluster with multiple brokers and partitions" class="max-h-72 mx-auto rounded-lg" />
 
 ---
-layout: center
----
-
-<SectionBreak
-  title="Wieso Kafka?"
-/>
-
-
----
 
 # Sources
 
