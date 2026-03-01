@@ -19,7 +19,7 @@ Die grundlegende Dateneinheit in Kafka ist die **Message**.
 Obwohl Kafka die Daten nur als Bytes sieht, benötigen die Anwendungen eine klare Datenstruktur.
 
 - **Gängige Formate:** JSON, XML oder Apache Avro.
-- **Entkopplung:** Ein festes Schema entkoppelt Producer (Schreiber) und Consumer (Leser).
+- **Entkopplung:** Ein festes Schema entkoppelt Producer und Consumer.
 - **Vorteil:** Consumer- und Producer-Anwendungen müssen bei Formatänderungen nicht zwingend zeitgleich aktualisiert werden.
 - **Best Practice:** Die zentrale Verwaltung von Formaten über eine **Schema Registry**.
 ## Topics und Partitions
@@ -78,6 +78,6 @@ Nachrichten werden dauerhaft auf der Festplatte gespeichert, was Kafka von reine
 - **Schutz:** Das System bietet Schutz vor Datenverlust bei Lastspitzen, da Nachrichten sicher auf Disk committet werden.
 
 ## Quellen
-1. Apache Kafka "Powered By" page: https://kafka.apache.org/powered-by/
-2. Kafka: The Definitive Guide (Neha Narkhede, Gwen Shapira, Todd Palino, O'Reilly, 2017), ISBN 978-1-491-93616-0
-3. Podcast: https://gotime.fm/299
+Apache Kafka "Powered By" page: https://kafka.apache.org/powered-by/
+Kafka: The Definitive Guide (Neha Narkhede, Gwen Shapira, Todd Palino, O'Reilly, 2017), ISBN 978-1-491-93616-0
+All about Kafka with Matthew Boyle from Cloudflare (Go Time #299). (2024, 9. Januar). Changelog. https://changelog.com/gotime/299
