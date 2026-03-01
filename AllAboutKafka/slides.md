@@ -59,7 +59,6 @@ layout: center
 
 <SectionBreak
   title="Publish / Subscribe"
-  subtitle="Vom Problem klassischer Systeme zur Kafka-Denkweise"
 />
 
 ---
@@ -191,23 +190,6 @@ Kafka ist Format von Nachricht/Key egal.
   </div>
 </div>
 
----
-
-# Apache Avro
-
-<div class="k-split">
-  <div>
-    <ul>
-      <li>JSON-orientiert, aber effizient für Big-Data-Workloads</li>
-      <li>Besteht aus Schema + kompakter Binary Data</li>
-      <li>Writer: Schema + Data -> Binary</li>
-      <li>Reader: Schema + Binary -> Data</li>
-    </ul>
-  </div>
-  <div class="k-visual-card">
-    <img src="/images/avro-pipeline.svg" alt="Avro writer and reader pipeline" class="max-h-72 mx-auto rounded-lg" />
-  </div>
-</div>
 
 ---
 
@@ -366,3 +348,24 @@ layout: center
 
 1. Apache Kafka "Powered By" page: https://kafka.apache.org/powered-by/
 2. Kafka: The Definitive Guide (Neha Narkhede, Gwen Shapira, Todd Palino, O'Reilly, 2017), ISBN 978-1-491-93616-0
+
+
+
+---
+
+# Apache Avro
+
+<div class="k-split">
+  <div>
+    <ul>
+      <li>JSON-orientiert, aber effizient für Big-Data-Workloads</li>
+      <li>Besteht aus Schema + kompakter Binary Data</li>
+      <li>Writer: Schema + Data -> Binary</li>
+      <li>Reader: Schema + Binary -> Data</li>
+    </ul>
+  </div>
+  <div class="k-visual-card">
+    <img src="/images/avro-pipeline.svg" alt="Avro writer and reader pipeline" class="max-h-72 mx-auto rounded-lg" />
+  </div>
+</div>
+
