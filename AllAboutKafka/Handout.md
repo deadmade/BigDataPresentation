@@ -1,3 +1,8 @@
+# Handout All About Kafka - Aufbau von Kafka
+von Manuel Schülein 
+
+---
+
 ## Was ist Kafka?
 
 Apache Kafka ist ein Publish/Subscribe-Messaging-System, das oft als Distributed Commit Log oder Distributed Streaming Platform bezeichnet wird.
@@ -69,7 +74,7 @@ Daten werden im Cluster für maximale Sicherheit dupliziert:
 - **Follower:** Diese Broker kopieren die Daten vom Leader (passive Redundanz).
 - **Failover:** Fällt der Leader aus, wird automatisch ein Follower zum neuen Leader gewählt.
 - **Verbindung:** Producers und Consumers kommunizieren immer direkt mit dem Leader einer Partition.
-
+![[Images/Cluster.png]]
 ## Disk-basierte Retention
 Nachrichten werden dauerhaft auf der Festplatte gespeichert, was Kafka von reinen In-Memory-Systemen unterscheidet.
 
@@ -78,6 +83,6 @@ Nachrichten werden dauerhaft auf der Festplatte gespeichert, was Kafka von reine
 - **Schutz:** Das System bietet Schutz vor Datenverlust bei Lastspitzen, da Nachrichten sicher auf Disk committet werden.
 
 ## Quellen
-Apache Kafka "Powered By" page: https://kafka.apache.org/powered-by/
-Kafka: The Definitive Guide (Neha Narkhede, Gwen Shapira, Todd Palino, O'Reilly, 2017), ISBN 978-1-491-93616-0
-All about Kafka with Matthew Boyle from Cloudflare (Go Time #299). (2024, 9. Januar). Changelog. https://changelog.com/gotime/299
+- Apache Kafka "Powered By" page: https://kafka.apache.org/powered-by/
+- Kafka: The Definitive Guide (Neha Narkhede, Gwen Shapira, Todd Palino, O'Reilly, 2017), ISBN 978-1-491-93616-0
+- All about Kafka with Matthew Boyle from Cloudflare (Go Time #299). (2024, 9. Januar). Changelog. https://changelog.com/gotime/299
