@@ -5,6 +5,7 @@ author: deadmade
 class: text-left
 transition: slide-left
 mdc: true
+#page-number: true
 ---
 
 <div class="section-break">
@@ -387,6 +388,12 @@ layout: center
 1. Apache Kafka "Powered By" page: https://kafka.apache.org/powered-by/
 2. Kafka: The Definitive Guide (Neha Narkhede, Gwen Shapira, Todd Palino, O'Reilly, 2017), ISBN 978-1-491-93616-0
 
+---
+layout: center
+class: text-center
+---
+
+# Vielen Dank für eure Aufmerksamkeit!
 
 
 ---
