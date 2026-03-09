@@ -23,3 +23,4 @@
 - Do you have an good Idea what I could add(image idk) to the Schemas Slide?
 - I would like to add a bit of "pep" to the Schema-Format. What would be good?
 - could you please add the brokers from public/subscribe slide to the brokers slide similiar to the producers?
+- please create an animation of the schema + data for the apache avro slide

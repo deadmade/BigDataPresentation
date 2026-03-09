@@ -10,7 +10,7 @@
         <div class="line" style="width: 80%"></div>
         <div class="line" style="width: 40%"></div>
       </div>
-      <p>Einfach, lesbar, weit verbreitet.</p>
+      <p>Einfach lesbar, weit verbreitet</p>
     </div>
 
     <div class="format-card xml">
@@ -23,7 +23,7 @@
         <div class="line" style="width: 50%"></div>
         <div class="line" style="width: 90%"></div>
       </div>
-      <p>Streng strukturiert, aber verbose.</p>
+      <p>Streng strukturiert, verbose</p>
     </div>
 
     <div class="format-card avro">
@@ -35,7 +35,7 @@
         <div class="bit"></div><div class="bit"></div><div class="bit"></div><div class="bit"></div>
         <div class="bit"></div><div class="bit"></div><div class="bit"></div><div class="bit"></div>
       </div>
-      <p>Kompakt, schema-basiert, performant.</p>
+      <p>Kompakt, schema-basiert, performant</p>
     </div>
   </div>
 </template>

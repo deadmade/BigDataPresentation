@@ -190,8 +190,8 @@ Kafka ist Format von Nachricht/Key egal.
   <div>
     <ul>
       <li>Kleinste Speichereinheit in Kafka</li>
-      <li>Append-only Log mit chronologischem Verlauf</li>
-      <li>Message Key kann die Zielpartition bestimmen</li>
+      <li>Append-only</li>
+      <li>Message Key bestimmt Zielpartition</li>
       <li>Reihenfolge gilt strikt pro Partition</li>
     </ul>
   </div>
@@ -230,9 +230,9 @@ layout: center
 <div class="k-loop-detail k-loop-detail-topic">
   <div>
     <ul>
-      <li>Topic ist grob vergleichbar mit einer Datenbanktabelle</li>
-      <li>Jedes Topic hat mehrere Partitionen</li>
-      <li>Partitionen können über mehrere Broker verteilt sein</li>
+      <li>Topic vergleichbar mit Tabelle</li>
+      <li>Topic kann mehrere Partitionen haben</li>
+      <li>Partitionen können über mehrere Kafka Server verteilt sein</li>
     </ul>
   </div>
   <div class="k-visual-card">
@@ -265,28 +265,6 @@ layout: center
   <BrokerGroupNative />
 </div>
 <LoopAutoAdvanceNative :delay-ms="3200" />
-
----
-
-# Disk-basierte Retention
-
-<div class="k-split">
-  <div>
-    <ul>
-      <li>Messages werden dauerhaft auf Disk gespeichert</li>
-      <li>Konfigurierbare Regeln pro Topic (Zeit oder Größe)</li>
-      <li>Consumer müssen nicht in Echtzeit arbeiten</li>
-      <li>Schutz vor Datenverlust bei Lastspitzen oder Wartung</li>
-    </ul>
-  </div>
-  <RetentionModeNative />
-</div>
-
-<!--
-Durable message retention bedeutet, dass Consumer nicht in Echtzeit arbeiten müssen.
-Messages werden auf Disk committet und nach konfigurierten Regeln (Zeit/Größe) behalten.
-Erlaubt Wartung an Applikationen: Consumer können offline gehen und später ohne Datenverlust dort weitermachen, wo sie aufgehört haben.
--->
 
 ---
 
@@ -332,6 +310,28 @@ Erlaubt Wartung an Applikationen: Consumer können offline gehen und später ohn
 Replikation bietet Redundanz: Fällt ein Broker aus, kann ein anderer (Replika) die Leadership übernehmen.
 Wichtig: Alle Clients (Producers/Consumers) kommunizieren immer direkt mit dem Leader einer Partition.
 Der Controller überwacht den Status der Broker und stößt bei Ausfällen die Neuwahl des Leaders an.
+-->
+
+---
+
+# Disk-basierte Retention
+
+<div class="k-split">
+  <div>
+    <ul>
+      <li>Messages werden dauerhaft auf Disk gespeichert</li>
+      <li>Konfigurierbare Regeln pro Topic (Zeit oder Größe)</li>
+      <li>Consumer müssen nicht in Echtzeit arbeiten</li>
+      <li>Schutz vor Datenverlust bei Lastspitzen oder Wartung</li>
+    </ul>
+  </div>
+  <SaveIconNative />
+</div>
+
+<!--
+Durable message retention bedeutet, dass Consumer nicht in Echtzeit arbeiten müssen.
+Messages werden auf Disk committet und nach konfigurierten Regeln (Zeit/Größe) behalten.
+Erlaubt Wartung an Applikationen: Consumer können offline gehen und später ohne Datenverlust dort weitermachen, wo sie aufgehört haben.
 -->
 
 ---
@@ -403,7 +403,6 @@ layout: center
     </ul>
   </div>
   <div class="k-visual-card">
-    <img src="/images/avro-pipeline.svg" alt="Avro writer and reader pipeline" class="max-h-72 mx-auto rounded-lg" />
+    <AvroPipelineNative />
   </div>
 </div>
-
